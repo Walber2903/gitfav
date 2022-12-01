@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="./js/main.js" type="module" defer></script>
+
+    <title>GitFav</title>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>{ &sstarf; } GitFav</h1>
+            <div class="search">
+                <label class="sr-only" for="input-search">Digite o Github username que quer favoritar</label>
+                <input id="input-search" type="text" placeholder="Digite o Github username que quer favoritar">
+                <button>&star; FAVORITAR</button>
+            </div>
+        </header>
+        <table>
+            <thead>
+                <tr>
+                    <th>Users</th>
+                    <th>Repositories</th>
+                    <th>Followers</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="https://github.com/Walber2903.png" alt="Imagem de Walber">
+                        <a href="https://github.com/Walber2903" target="_blank">
+                            <p>Walber Araujo</p>
+                            <span>Walber2903</span>
+                        </a>
+                    </td>
+                    <td>
+                        21
+                    </td>
+                    <td>
+                        6
+                    </td>
+                    <td>
+                        <button>Remover</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img src="https://github.com/diego3g.png" alt="Imagem de Diego">
+                        <a href="https://github.com/diego3g" target="_blank">
+                            <p>Diego</p>
+                            <span>diego3g</span>
+                        </a>
+                    </td>
+                    <td>
+                        21
+                    </td>
+                    <td>
+                        6
+                    </td>
+                    <td>
+                        <button>Remover</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
