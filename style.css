@@ -16,6 +16,11 @@
     --background-input: #06181C;
     --text-input: #7C7C8A;
     --background-color: #000000;
+
+    --background-color-tr-even: #06161C;
+    --border-color: #4A808C;
+
+    --color-remove: #F75A68;
 }
 
 .sr-only {
@@ -40,7 +45,7 @@ body * {
     font-family: var(--ff-primary);
 }
 
-button {
+.favorite {
     background-color: var(--button-color);
 }
 
@@ -54,6 +59,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 11.5rem;
 }
 
 header h1 {
@@ -73,22 +79,90 @@ header h1 {
     border-radius: 5px;
     color: var(--text-input);
     background-color: var(--background-input);
+    border: none;
 }
 
 .search button {
     width: 17rem;
     height: 4.8rem;
     background-color: var(--button-color);
-    border-radius: 0 .4rem .4rem 0;
     border: none;
     padding: 0 1rem;
     cursor: pointer;
 
     gap: 8px;
-    border-radius: 5px;
+    border-radius: .4rem;
     color: var(--text-header-color);
 }
 
 .search button:hover {
     filter: brightness(1.1);
+}
+
+table {
+    margin-top: 8.7rem;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table * {
+    font-size: 1.4rem;
+    color: var(--text-color);
+}
+
+table th {
+ background: var(--table-head-color);
+ text-align: left;
+ font-weight: normal;
+ padding: 1.5rem;
+}
+
+table th:first-child {
+    border-top-left-radius: .4rem;
+}
+
+table th:last-child {
+    border-top-right-radius: .4rem;    
+}
+
+table tr {
+    background: var(--background-color-tr-even);
+}
+
+table tr:nth-child(odd) {
+    background: var(--background-color);   
+}
+
+table td {
+    padding: 1.5rem;
+    text-align: left;
+}
+
+td.user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+td.user img {
+    width: 5rem;
+    height: 5rem;
+
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+td.user p {
+    font-weight: bold;
+}
+
+td.user a {
+    text-decorate: none;
+}
+
+td .remove {
+    background: none;
+    border: none;
+    font-weight: bold;
+    color: var(--color-remove);
 }
