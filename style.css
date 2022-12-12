@@ -165,4 +165,5 @@ td .remove {
     border: none;
     font-weight: bold;
     color: var(--color-remove);
+    cursor: pointer;
 }
