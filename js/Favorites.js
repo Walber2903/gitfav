@@ -1,3 +1,5 @@
+import { GithubUser } from "./GithubUser.js"
+
 export class Favorites {
     constructor(root) {
         this.root = document.querySelector(root)
@@ -5,23 +7,40 @@ export class Favorites {
         this.tbody = this.root.querySelector('table tbody')
 
         this.load()
+        this.onAdd()
+
+        
     }
 
     load() {
         this.entries = JSON.parse(localStorage.getItem('@github-gitfav:')) || []
+    }
 
-        /*this.entries = [{
-            login: 'Walber2903',
-            name: 'Walber Araujo',
-            public_repos: '76',
-            followers: '123'
-        },
-        {
-            login: 'diego3g',
-            name: 'Diego Fernandes',
-            public_repos: '48',
-            followers: '22503'
-        }]*/
+    save() {
+        localStorage.setItem('@github-gitfav:', JSON.stringify(this.entries))
+    }
+
+    async add(username) {
+        try {
+
+            const userExists = this.entries.find(entry => entry.login === username)
+
+            if(userExists) {
+                throw new Error('User already registered!')
+            }
+
+            const githubUser = await GithubUser.search(username)
+            if(githubUser.login === undefined) {
+                throw new Error('User not found!')
+            }
+
+            this.entries = [githubUser, ...this.entries]
+            this.update()
+            this.save()
+
+        } catch(error) {
+            alert(error.message)
+        }
     }
 
     delete(user) {
@@ -29,6 +48,7 @@ export class Favorites {
 
         this.entries = filteredEntries
         this.update()
+        this.save()
     }
 }
 
@@ -36,7 +56,19 @@ export class FavoritesView extends Favorites {
     constructor(root) {
         super(root)
 
+        this.tbody = this.root.querySelector('table tbody')
+
         this.update()
+        this.onAdd()
+    }
+
+    onAdd() {
+        const addFavorite = this.root.querySelector('.search button')
+        addFavorite.onclick = () => {
+            const { value } = this.root.querySelector('.search input')
+
+            this.add(value)
+        }
     }
 
     update() {
@@ -47,6 +79,7 @@ export class FavoritesView extends Favorites {
 
             row.querySelector('.user img').src= `https://github.com/${user.login}.png`
             row.querySelector('.user img').alt= `Imagem de ${user.login}`
+            row.querySelector('.user a').href = `https://github.com/${user.login}`
             row.querySelector('.user p').textContent = user.name
             row.querySelector('.user span').textContent = user.login
             row.querySelector('.repositories').textContent = user.public_repos

@@ -51,7 +51,8 @@ body * {
 
 #app {
     padding: 2rem;
-    max-width: 1120px;
+    max-width: 1080px;
+    min-width: 796px;
     margin: 0 auto;
 }
 
@@ -59,6 +60,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 10rem;
     margin-top: 11.5rem;
 }
 
@@ -74,7 +76,7 @@ header h1 {
 
 .search input {
     height: 4.8rem;
-    width: 46.2rem;
+    width: 34.2rem;
     padding: 1.6rem;
     border-radius: 5px;
     color: var(--text-input);
@@ -83,7 +85,7 @@ header h1 {
 }
 
 .search button {
-    width: 17rem;
+    width: 15rem;
     height: 4.8rem;
     background-color: var(--button-color);
     border: none;
